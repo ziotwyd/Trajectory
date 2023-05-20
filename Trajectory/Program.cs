@@ -13,7 +13,7 @@ namespace trajectory
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Create and run the main form of your application
-            Application.Run(new Form_MainMenu());
+            Application.Run(new Trajectory.MainMenu());
         }
     }
 }
