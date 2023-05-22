@@ -21,5 +21,10 @@ namespace Trajectory
         {
        
         }
+
+        private void FormUpdates_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

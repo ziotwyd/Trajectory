@@ -19,7 +19,12 @@ namespace Trajectory
 
         private void button1_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://cdn.fnbuilds.services/11.31.rar");
+            System.Diagnostics.Process.Start("https://cdn.fnbuilds.services/9.10.rar");
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

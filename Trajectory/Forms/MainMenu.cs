@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
@@ -51,7 +52,7 @@ namespace Trajectory
 
                     currentButton = (Button)btnSender;
                     currentButton.ForeColor = Color.White;
-                    currentButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    currentButton.Font = new System.Drawing.Font("Impact", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 }
 
             }
@@ -65,7 +66,7 @@ namespace Trajectory
                 {
                     previousBtn.BackColor = Color.FromArgb(22, 27, 32);
                     previousBtn.ForeColor = Color.White;
-                    previousBtn.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    previousBtn.Font = new System.Drawing.Font("Impact", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 }
             }
         }
@@ -96,7 +97,11 @@ namespace Trajectory
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormLauncher(), sender);
+         
+            ActivateButton(sender);
+
+
+            pictureBox1.Visible = true;
         }
 
         private void panelLogo_Paint(object sender, PaintEventArgs e)
@@ -106,8 +111,25 @@ namespace Trajectory
 
         private void buttonCREDITS_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.FormLauncher(), sender);
+            ActivateButton(sender);
+
+            FormLauncher launcher = new FormLauncher() { TopLevel = false, TopMost = true };
+            launcher.FormBorderStyle = FormBorderStyle.None;
+            panel_FORMS.Controls.Add(launcher);
+            launcher.Show();
+
+
+
+            pictureBox1.Visible = false;
+            panel_FORMS.Visible = true;
+
+
+
+
+
         }
+
+
 
 
 
@@ -117,6 +139,14 @@ namespace Trajectory
         private void button2_Click(object sender, EventArgs e)
         {
             ActivateButton(sender);
+
+            FormDownloads downloads = new FormDownloads() { TopLevel = false, TopMost = true };
+            downloads.FormBorderStyle = FormBorderStyle.None;
+            panel_FORMS.Controls.Add(downloads);
+            downloads.Show();
+
+            panel_FORMS.Visible = true;
+            pictureBox1.Visible = false;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -136,7 +166,20 @@ namespace Trajectory
 
         private void Updates_Button_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FormLauncher(), sender);
+            ActivateButton(sender);
+
+            FormUpdates updates = new FormUpdates() { TopLevel = false, TopMost = true };
+            updates.FormBorderStyle = FormBorderStyle.None;
+            panelUpdates.Controls.Add(updates);
+            updates.Show();
+
+            updates.Visible = true;
+            panel_FORMS.Visible = false;
+
+
+
+
+
         }
 
         private void Credits_Button_Click(object sender, EventArgs e)
@@ -157,6 +200,21 @@ namespace Trajectory
                 mousePose.Offset(mouseLocation.X, mouseLocation.Y);
                 Location = mousePose;
             }
+        }
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
